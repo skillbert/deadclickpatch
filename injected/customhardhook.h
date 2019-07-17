@@ -67,8 +67,8 @@ public:
 
 		//number of bytes relocated from function head
 		//should do some disassembling to find a number of bytes without breaking up an instruction
-		int pos = 0;
 		gapsize = 5;
+		int pos = 0;
 		memcpy(data, funcin, gapsize);
 		pos += gapsize;
 		pos += WriteJump64(data+pos, func + gapsize);

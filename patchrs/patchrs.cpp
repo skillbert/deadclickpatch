@@ -28,7 +28,7 @@ int main() {
 	}
 
 	wstring currentDir = GetCurrentDir();
-	wstring strDLL = currentDir + L"\\injected.dll";
+	wstring strDLL = currentDir + L"\\deadclickpatch.dll";
 	bool bSuccess = InjectLibrary(hProcess, strDLL) != 0;
 	CloseHandle(hProcess);
 
