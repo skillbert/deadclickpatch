@@ -106,8 +106,11 @@ BOOL WINAPI runPeekMessageA(LPMSG lpmsg, HWND hwnd, UINT wfiltermin, UINT wfilte
 	}
 
 	if (r || !allow) {
-		if (OUTFILE) {
-			ofs << "peekmessage n:" << framenr << " threadid:" << std::this_thread::get_id() << (allow ? "" : " BLOCKED") << " mes:" << lpmsg->message << " lparam:" << lpmsg->lParam << " wparam:" << lpmsg->wParam << std::endl;
+		//ignore mouse move message spam
+		if (lpmsg->message != 512) {
+			if (OUTFILE) {
+				ofs << "peekmessage n:" << framenr << " threadid:" << std::this_thread::get_id() << (allow ? "" : " BLOCKED") << " mes:" << lpmsg->message << " lparam:" << lpmsg->lParam << " wparam:" << lpmsg->wParam << std::endl;
+			}
 		}
 	}
 	return r;
